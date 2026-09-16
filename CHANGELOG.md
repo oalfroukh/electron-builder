@@ -1,3 +1,17 @@
+# [26.17.0](https://github.com/electron-userland/electron-builder/compare/electron-builder@26.16.1...electron-builder@26.17.0) (2026-09-16)
+
+
+### Bug Fixes
+
+* detect pnpm workspace root on Windows without shelling out to pwd (v26 backport) ([#10189](https://github.com/electron-userland/electron-builder/issues/10189)) ([59f6364](https://github.com/electron-userland/electron-builder/commit/59f63644f80381f018c91246762caee7586ab126))
+
+
+### Features
+
+* **nsis:** "store-asar" mode for proportional differential updates (v26 backport) ([#10201](https://github.com/electron-userland/electron-builder/issues/10201)) ([2a2dd22](https://github.com/electron-userland/electron-builder/commit/2a2dd22c17006ec80acf4704642ca83378e5fdb1))
+
+
+
 ## [26.16.1](https://github.com/electron-userland/electron-builder/compare/electron-builder@26.16.0...electron-builder@26.16.1) (2026-09-07)
 
 

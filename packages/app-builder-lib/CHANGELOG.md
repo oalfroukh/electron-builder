@@ -1,5 +1,26 @@
 # app-builder-lib
 
+## 26.17.0
+
+### Minor Changes
+
+- Feat(nsis): `differentialPackage: "store-asar"` — store `resources/app.asar` uncompressed (7-Zip `Copy`) in the differential-aware app package so a small app-code change costs a proportionally small differential download instead of re-downloading the entire recompressed asar (measured on a ~32 MB asar: 0.2% instead of 100% for a one-line change). `nsis.differentialPackage` is widened to `boolean | "compressed" | "store-asar"`: `false` disables differential support as before, `"store-asar"` opts into the stored asar, and everything else (`true`, `"compressed"`, unset) keeps today's fully compressed differential package. Backed by a generic `ArchiveOptions.storedPaths` in `archive()`. _[`#10201`](https://github.com/electron-userland/electron-builder/pull/10201) [`2a2dd22`](https://github.com/electron-userland/electron-builder/commit/2a2dd22c17006ec80acf4704642ca83378e5fdb1) [@claude](https://github.com/apps/claude)_
+
+### Patch Changes
+
+- Fix: resolve the pnpm workspace root by walking up for `pnpm-workspace.yaml` instead of running `pnpm --workspace-root exec pwd`. `pwd` is POSIX-only, so on Windows the root silently resolved to `undefined`, `@electron/rebuild` searched only the app directory, and cross-architecture builds (e.g. `--x64 --arm64`) shipped transitive native modules such as `keytar` for the wrong architecture. When a workspace root is located but the package manager cannot be re-detected there, the located root is now kept and a warning is logged instead of dropping it. _[`#10189`](https://github.com/electron-userland/electron-builder/pull/10189) [`59f6364`](https://github.com/electron-userland/electron-builder/commit/59f63644f80381f018c91246762caee7586ab126) [@claude](https://github.com/apps/claude)_
+
+<details><summary>Updated 2 dependencies</summary>
+
+<small>
+
+</small>
+
+- `dmg-builder@26.17.0`
+- `electron-builder-squirrel-windows@26.17.0`
+
+</details>
+
 ## 26.16.1
 
 ### Patch Changes
